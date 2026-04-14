@@ -109,37 +109,58 @@ const users = [
     {
         name: "amisha rathore",
         pic: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z2lybHxlbnwwfHwwfHx8MA%3D%3D",
-        bio: "silent chaos in a loud world | not for everyone"
+        bio: "silent chaos in a loud world | not for everyone",
+        age: 25,
+        location: "Mumbai, India",
+        interests: ["Photography", "Travel", "Music"]
     },
     {
         name: "mahak sharma",
         pic: "https://images.unsplash.com/photo-1586351012965-861624544334?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        bio: "dream big | hustle harder"
+        bio: "dream big | hustle harder",
+        age: 23,
+        location: "Delhi, India",
+        interests: ["Fitness", "Entrepreneurship", "Reading"]
     },
     {
         name: "priya singh",
         pic: "https://images.unsplash.com/photo-1581403341630-a6e0b9d2d257?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        bio: "living life on my own terms"
+        bio: "living life on my own terms",
+        age: 26,
+        location: "Bangalore, India",
+        interests: ["Art", "Yoga", "Cooking"]
     },
     {
         name: "meera joshi",
         pic: "https://plus.unsplash.com/premium_photo-1671586881745-7b3d98a73138?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        bio: "lost in thoughts, found in dreams"
+        bio: "lost in thoughts, found in dreams",
+        age: 24,
+        location: "Pune, India",
+        interests: ["Writing", "Nature", "Meditation"]
     },
     {
         name: "sneha patel",
         pic: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1288&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        bio: "smile more, worry less 😊"
+        bio: "smile more, worry less 😊",
+        age: 22,
+        location: "Ahmedabad, India",
+        interests: ["Dancing", "Socializing", "Volunteering"]
     },
     {
         name: "pooja malhotra",
         pic: "https://images.unsplash.com/photo-1558507652-2d9626c4e67a?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        bio: "born to stand out, not fit in"
+        bio: "born to stand out, not fit in",
+        age: 27,
+        location: "Chennai, India",
+        interests: ["Fashion", "Design", "Technology"]
     },
     {
         name: "kanika patel",
         pic: "https://images.unsplash.com/photo-1574013452070-94fa88bc5ddd?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        bio: "crazy blogger and bike lover"
+        bio: "crazy blogger and bike lover",
+        age: 25,
+        location: "Jaipur, India",
+        interests: ["Blogging", "Motorcycling", "Adventure"]
     }
 ];
 
@@ -150,6 +171,9 @@ const closeModal = document.getElementById("close-modal");
 const modalImg = document.getElementById("modal-img");
 const modalName = document.getElementById("modal-name");
 const modalBio = document.getElementById("modal-bio");
+const modalAge = document.getElementById("modal-age");
+const modalLocation = document.getElementById("modal-location");
+const modalInterests = document.getElementById("modal-interests");
 
 function createUserCard(user) {
     const card = document.createElement("div");
@@ -170,10 +194,7 @@ function createUserCard(user) {
     const h3 = document.createElement("h3");
     h3.textContent = user.name;
 
-    const p = document.createElement("p");
-    p.textContent = user.bio;
-
-    content.append(h3, p);
+    content.append(h3);
     card.append(img, blur, content);
 
     card.addEventListener("click", () => openModal(user));
@@ -206,7 +227,18 @@ function showUsers(userList) {
 function openModal(user) {
     modalImg.src = user.pic;
     modalName.textContent = user.name;
+    modalAge.textContent = `Age: ${user.age}`;
+    modalLocation.textContent = `📍 ${user.location}`;
     modalBio.textContent = user.bio;
+    
+    modalInterests.innerHTML = "";
+    user.interests.forEach(interest => {
+        const span = document.createElement("span");
+        span.textContent = interest;
+        span.className = "bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm";
+        modalInterests.appendChild(span);
+    });
+    
     modal.classList.remove("hidden");
     modal.classList.add("flex");
 }
@@ -228,7 +260,9 @@ input.addEventListener("input", () => {
     const searchValue = input.value.trim().toLowerCase();
     const filteredUsers = users.filter((user) =>
         user.name.toLowerCase().includes(searchValue) ||
-        user.bio.toLowerCase().includes(searchValue)
+        user.bio.toLowerCase().includes(searchValue) ||
+        user.location.toLowerCase().includes(searchValue) ||
+        user.interests.some(interest => interest.toLowerCase().includes(searchValue))
     );
     showUsers(filteredUsers);
 });
