@@ -145,6 +145,11 @@ const users = [
 
 const cardsContainer = document.querySelector(".cards");
 const input = document.querySelector(".inp");
+const modal = document.getElementById("modal");
+const closeModal = document.getElementById("close-modal");
+const modalImg = document.getElementById("modal-img");
+const modalName = document.getElementById("modal-name");
+const modalBio = document.getElementById("modal-bio");
 
 function createUserCard(user) {
     const card = document.createElement("div");
@@ -171,6 +176,8 @@ function createUserCard(user) {
     content.append(h3, p);
     card.append(img, blur, content);
 
+    card.addEventListener("click", () => openModal(user));
+
     return card;
 }
 
@@ -196,13 +203,33 @@ function showUsers(userList) {
     cardsContainer.appendChild(fragment);
 }
 
+function openModal(user) {
+    modalImg.src = user.pic;
+    modalName.textContent = user.name;
+    modalBio.textContent = user.bio;
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+}
+
+function closeModalFunc() {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+}
+
+closeModal.addEventListener("click", closeModalFunc);
+
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        closeModalFunc();
+    }
+});
+
 input.addEventListener("input", () => {
     const searchValue = input.value.trim().toLowerCase();
-
     const filteredUsers = users.filter((user) =>
-        user.name.toLowerCase().includes(searchValue)
+        user.name.toLowerCase().includes(searchValue) ||
+        user.bio.toLowerCase().includes(searchValue)
     );
-
     showUsers(filteredUsers);
 });
 
