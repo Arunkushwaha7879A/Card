@@ -29,21 +29,8 @@
 //     //     pic: "https://images.unsplash.com/photo-1681084421455-ccdb9478d802?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 //     //     bio: "coding my way through life 💻"
 //     // },
-//     {
-//         name: "sneha patel",
-//         pic: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1288&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//         bio: "smile more, worry less 😊"
-//     },
-//     {
-//         name: "pooja malhotra",
-//         pic: "https://images.unsplash.com/photo-1558507652-2d9626c4e67a?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//         bio: "born to stand out, not fit in"
-//     },
-//      {
-//         name: "kanika patel",
-//         pic: "https://images.unsplash.com/photo-1574013452070-94fa88bc5ddd?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//         bio: "crazy blogger and bike lover"
-//     }
+//    
+//    
 // ]
 
 // function showUsers(arr){
