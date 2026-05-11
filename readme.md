@@ -7,7 +7,6 @@ A simple web application built using HTML, CSS, and JavaScript that allows users
 - Real-time user search
 - Responsive card design
 - Fast and lightweight
-- Clean UI
 - Dynamic filtering using JavaScript
 
 ## Technologies Used
