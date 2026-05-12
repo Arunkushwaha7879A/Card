@@ -17,7 +17,7 @@ A simple web application built using HTML, CSS, and JavaScript that allows users
 
 ## Project Structure
 
-```bash
+
 ├── index.html
 ├── style.css
 ├── script.js
