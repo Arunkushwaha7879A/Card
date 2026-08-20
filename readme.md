@@ -8,6 +8,8 @@ A simple web application built using HTML, CSS, and JavaScript that allows users
 - Responsive card design
 - Fast and lightweight
 - Dynamic filtering using JavaScript
+- dynamic page
+- better
 
 ## Technologies Used
 
